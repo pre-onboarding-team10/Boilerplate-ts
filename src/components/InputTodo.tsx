@@ -22,7 +22,7 @@ const InputTodo = ({ setTodos }: InputTodoProps) => {
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = useCallback(
     async e => {
       try {
-        if (isEmptyInputText()) return alert('Please write something');
+        if (!isEmptyInputText()) return alert('Please write something');
 
         e.preventDefault();
         toggleLoading();
