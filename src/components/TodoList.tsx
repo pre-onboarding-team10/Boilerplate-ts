@@ -1,6 +1,7 @@
 import TodoItem from './TodoItem';
 import { useContext } from 'react';
 import { todoContext } from '../pages/Main';
+import { FaSpinner } from 'react-icons/fa';
 
 const TodoList = () => {
   const todolistvalue = useContext(todoContext);
@@ -11,7 +12,8 @@ const TodoList = () => {
       ))}
     </ul>
   ) : (
-    <div className="empty-list">...</div>
+    // <div className="empty-list">...</div>
+    <FaSpinner className="empty-list"/>
   );
 };
 export default TodoList;

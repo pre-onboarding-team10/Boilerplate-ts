@@ -3,7 +3,7 @@ import React, { useCallback, useState } from 'react';
 import { useContext } from 'react';
 import { todoContext } from '../pages/Main';
 import { deleteTodo } from '../api/todo';
-import { TodoItemProps } from '../types/todo'
+import { TodoItemProps } from '../types/todo';
 
 const TodoItem = ({ id, title }: TodoItemProps) => {
   const todolistvalue = useContext(todoContext);

@@ -3,7 +3,7 @@ import Header from '../components/Header';
 import InputTodo from '../components/InputTodo';
 import TodoList from '../components/TodoList';
 import { getTodoList } from '../api/todo';
-import { TodoListContextProps } from '../types/todo'
+import { TodoListContextProps } from '../types/todo';
 
 export const todoContext = createContext<TodoListContextProps>({
   todos: [],
