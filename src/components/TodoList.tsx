@@ -12,7 +12,7 @@ const TodoList = () => {
       ))}
     </ul>
   ) : (
-    <FaSpinner className="empty-list"/>
+    <FaSpinner className="empty-list" />
   );
 };
 export default TodoList;

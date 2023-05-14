@@ -5,7 +5,7 @@ export interface TodoItemProps {
 }
 
 export interface UseFocusProps {
-  ref: React.LegacyRef<HTMLInputElement>
+  ref: React.LegacyRef<HTMLInputElement>;
   setFocus: () => void;
 }
 
@@ -14,7 +14,7 @@ export interface TodoListContextProps {
   setTodos: React.Dispatch<React.SetStateAction<never[]>>;
 }
 
-interface TodoType{
+interface TodoType {
   id: number;
   title: string;
 }
