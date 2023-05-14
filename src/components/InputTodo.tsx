@@ -1,47 +1,42 @@
 import { FaPlusCircle, FaSpinner } from 'react-icons/fa';
-import React, { LegacyRef, useCallback, useEffect, useState } from 'react';
+import React, { LegacyRef, useCallback, useEffect } from 'react';
 
 import { createTodo } from '../api/todo';
 import useFocus from '../hooks/useFocus';
 import { TodoType } from '../types/todo';
 import useInput from '../hooks/useInput';
+import useLoading from '../hooks/useLoading';
 
 type InputTodoProps = {
   setTodos: React.Dispatch<React.SetStateAction<TodoType[]>>;
 };
 
 const InputTodo = ({ setTodos }: InputTodoProps) => {
-  const [inputText, onChangeInputText, clearInputText] = useInput();
-  const [isLoading, setIsLoading] = useState(false);
+  const { inputText, onChangeInputText, clearInputText, isEmptyInputText } =
+    useInput();
+  const [isLoading, toggleLoading] = useLoading(false);
   const { ref, setFocus } = useFocus();
 
-  useEffect(() => {
-    setFocus();
-  }, [setFocus]);
+  useEffect(setFocus, [setFocus]);
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = useCallback(
     async e => {
       try {
+        if (isEmptyInputText()) return alert('Please write something');
+
         e.preventDefault();
-        setIsLoading(true);
+        toggleLoading();
 
-        const trimmed = inputText.trim();
-        if (!trimmed) {
-          return alert('Please write something');
-        }
-
-        const newItem = { title: trimmed };
+        const newItem = { title: inputText };
         const { data } = await createTodo(newItem);
 
-        if (data) {
-          return setTodos(prev => [...prev, data]);
-        }
+        if (data) return setTodos(prev => [...prev, data]);
       } catch (error) {
         console.error(error);
         alert('Something went wrong.');
       } finally {
         clearInputText();
-        setIsLoading(false);
+        toggleLoading();
       }
     },
     [inputText, setTodos]
