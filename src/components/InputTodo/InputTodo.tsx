@@ -1,20 +1,29 @@
-import { FaPlusCircle, FaSpinner } from 'react-icons/fa';
+import { FormEvent, ChangeEvent } from 'react';
 import { useCallback, useEffect, useState } from 'react';
-
 import { createTodo } from '../../api/todo';
 import useFocus from '../../hooks/useFocus';
+import styles from './InputTodo.module.css';
+import AddButton from '../AddButton/AddButton';
+import Spinner from '../Spinner/Spinner';
+import { SetTodoProps } from '../../intefaces';
 
-const InputTodo = ({ setTodos }) => {
+const PLACEHOLDER_TEXT = 'Add new todo...';
+
+const InputTodo = ({ setTodos }: SetTodoProps) => {
   const [inputText, setInputText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const { ref, setFocus } = useFocus();
+  const { ref, setFocus } = useFocus<HTMLInputElement>();
 
   useEffect(() => {
     setFocus();
   }, [setFocus]);
 
+  const handleInputChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setInputText(e.target.value);
+  }, []);
+
   const handleSubmit = useCallback(
-    async e => {
+    async (e: FormEvent<HTMLFormElement>) => {
       try {
         e.preventDefault();
         setIsLoading(true);
@@ -42,22 +51,16 @@ const InputTodo = ({ setTodos }) => {
   );
 
   return (
-    <form className="form-container" onSubmit={handleSubmit}>
+    <form className={styles.form_container} onSubmit={handleSubmit}>
       <input
-        className="input-text"
-        placeholder="Add new todo..."
+        className={styles.input_text}
+        placeholder={PLACEHOLDER_TEXT}
         ref={ref}
         value={inputText}
-        onChange={e => setInputText(e.target.value)}
+        onChange={handleInputChange}
         disabled={isLoading}
       />
-      {!isLoading ? (
-        <button className="input-submit" type="submit">
-          <FaPlusCircle className="btn-plus" />
-        </button>
-      ) : (
-        <FaSpinner className="spinner" />
-      )}
+      {!isLoading ? <AddButton /> : <Spinner />}
     </form>
   );
 };
