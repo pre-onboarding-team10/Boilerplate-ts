@@ -11,7 +11,7 @@ const useInput = (): useInputReturnType => {
 
   const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    setInput(input);
+    setInput(e.target.value);
   };
 
   const clearInput = () => {
