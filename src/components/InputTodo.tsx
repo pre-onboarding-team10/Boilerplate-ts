@@ -4,13 +4,14 @@ import React, { LegacyRef, useCallback, useEffect, useState } from 'react';
 import { createTodo } from '../api/todo';
 import useFocus from '../hooks/useFocus';
 import { TodoType } from '../types/todo';
+import useInput from '../hooks/useInput';
 
 type InputTodoProps = {
   setTodos: React.Dispatch<React.SetStateAction<TodoType[]>>;
 };
 
 const InputTodo = ({ setTodos }: InputTodoProps) => {
-  const [inputText, setInputText] = useState('');
+  const [inputText, onChangeInputText, clearInputText] = useInput();
   const [isLoading, setIsLoading] = useState(false);
   const { ref, setFocus } = useFocus();
 
@@ -39,7 +40,7 @@ const InputTodo = ({ setTodos }: InputTodoProps) => {
         console.error(error);
         alert('Something went wrong.');
       } finally {
-        setInputText('');
+        clearInputText();
         setIsLoading(false);
       }
     },
@@ -53,7 +54,7 @@ const InputTodo = ({ setTodos }: InputTodoProps) => {
         placeholder="Add new todo..."
         ref={ref as LegacyRef<HTMLInputElement>}
         value={inputText}
-        onChange={e => setInputText(e.target.value)}
+        onChange={onChangeInputText}
         disabled={isLoading}
       />
       {!isLoading ? (
