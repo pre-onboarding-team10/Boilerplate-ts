@@ -1,24 +1,26 @@
 import React, { useState } from 'react';
 
-type useInputReturnType = [
-  string,
-  (e: React.ChangeEvent<HTMLInputElement>) => void,
-  () => void
-];
-
+type useInputReturnType = {
+  inputText: string;
+  onChangeInputText: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  clearInputText: () => void;
+  isEmptyInputText: () => boolean;
+};
 const useInput = (): useInputReturnType => {
-  const [input, setInput] = useState('');
+  const [inputText, setInputText] = useState('');
 
-  const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeInputText = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    setInput(e.target.value);
+    setInputText(e.target.value);
   };
 
-  const clearInput = () => {
-    setInput('');
+  const clearInputText = () => {
+    setInputText('');
   };
 
-  return [input, onChangeInput, clearInput];
+  const isEmptyInputText = () => Boolean(inputText.trim());
+
+  return { inputText, onChangeInputText, clearInputText, isEmptyInputText };
 };
 
 export default useInput;
