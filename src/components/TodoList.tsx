@@ -12,7 +12,6 @@ const TodoList = () => {
       ))}
     </ul>
   ) : (
-    // <div className="empty-list">...</div>
     <FaSpinner className="empty-list"/>
   );
 };

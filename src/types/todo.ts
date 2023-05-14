@@ -1,14 +1,20 @@
+import React from 'react';
 export interface TodoItemProps {
   id: number;
   title: string;
 }
 
 export interface UseFocusProps {
-  ref: any;
+  ref: React.LegacyRef<HTMLInputElement>
   setFocus: () => void;
 }
 
 export interface TodoListContextProps {
-  todos: never[];
+  todos: TodoType[];
   setTodos: React.Dispatch<React.SetStateAction<never[]>>;
+}
+
+interface TodoType{
+  id: number;
+  title: string;
 }
