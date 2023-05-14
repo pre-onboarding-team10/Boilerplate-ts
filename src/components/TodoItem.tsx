@@ -2,13 +2,8 @@ import { FaSpinner, FaTrash } from 'react-icons/fa';
 import React, { useCallback, useState } from 'react';
 import { useContext } from 'react';
 import { todoContext } from '../pages/Main';
-
 import { deleteTodo } from '../api/todo';
-
-interface TodoItemProps {
-  id: number;
-  title: string;
-}
+import { TodoItemProps } from '../types/todo'
 
 const TodoItem = ({ id, title }: TodoItemProps) => {
   const todolistvalue = useContext(todoContext);

@@ -1,9 +1,5 @@
 import { useRef } from 'react';
-
-interface UseFocusProps {
-  ref: any;
-  setFocus: () => void;
-}
+import { UseFocusProps } from '../types/todo'
 
 const useFocus = (): UseFocusProps => {
   const ref = useRef<HTMLElement>(null);

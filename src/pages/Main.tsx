@@ -1,14 +1,9 @@
 import React, { useEffect, useState, createContext } from 'react';
-
 import Header from '../components/Header';
 import InputTodo from '../components/InputTodo';
 import TodoList from '../components/TodoList';
 import { getTodoList } from '../api/todo';
-
-interface TodoListContextProps {
-  todos: never[];
-  setTodos: React.Dispatch<React.SetStateAction<never[]>>;
-}
+import { TodoListContextProps } from '../types/todo'
 
 export const todoContext = createContext<TodoListContextProps>({
   todos: [],
