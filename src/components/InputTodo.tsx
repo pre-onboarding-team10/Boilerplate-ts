@@ -39,7 +39,7 @@ const InputTodo = ({ setTodos }: InputTodoProps) => {
         toggleLoading();
       }
     },
-    [inputText, setTodos]
+    [inputText, setTodos, clearInputText, isEmptyInputText, toggleLoading]
   );
 
   return (

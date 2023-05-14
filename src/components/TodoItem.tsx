@@ -25,7 +25,7 @@ const TodoItem = ({ id, title, setTodos }: TodoItemProps) => {
     } finally {
       toggleIsLoading();
     }
-  }, [id, setTodos]);
+  }, [id, setTodos, toggleIsLoading]);
 
   return (
     <li className="item">
