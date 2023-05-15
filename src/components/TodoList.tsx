@@ -4,14 +4,20 @@ import useTodo from '../hooks/useTodo';
 const TodoList = () => {
   const { todoListData } = useTodo();
 
-  return todoListData.length ? (
+  if (!todoListData.length) {
+    return (
+      <>
+        <div className="empty-list">...</div>
+      </>
+    );
+  }
+
+  return (
     <ul>
-      {todoListData.map(({ id, title }) => (
+      {todoListData?.map(({ id, title }) => (
         <TodoItem key={id} id={id} title={title} />
       ))}
     </ul>
-  ) : (
-    <div className="empty-list">...</div>
   );
 };
 export default TodoList;
