@@ -22,7 +22,7 @@ export const createTodo = async (data: { title: string }) => {
   }
 };
 
-export const deleteTodo = async (id: number) => {
+export const deleteTodo = async (id: string) => {
   try {
     const response = await apiRequest.delete(`${RESOURCE}/${id}`);
 

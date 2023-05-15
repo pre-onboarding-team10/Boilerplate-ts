@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from 'react';
 
 interface Todo {
-  id: number;
+  id: string;
   title: string;
 }
 
