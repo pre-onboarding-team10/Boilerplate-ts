@@ -1,12 +1,14 @@
 import { FaPlusCircle, FaSpinner } from 'react-icons/fa';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback } from 'react';
 import { createTodo } from '../api/todo';
+
 import useFocus from '../hooks/useFocus';
 import useLoading from '../hooks/useLoading';
 import useTodo from '../hooks/useTodo';
+import useInput from '../hooks/useInput';
 
 const InputTodo = () => {
-  const [inputText, setInputText] = useState('');
+  const { inputText, setInputText, handleChangeInput } = useInput();
   const { ref } = useFocus();
   const { isLoading, setIsLoading } = useLoading();
   const { setTodoListData: setTodos } = useTodo();
@@ -46,7 +48,7 @@ const InputTodo = () => {
         placeholder="Add new todo..."
         ref={ref}
         value={inputText}
-        onChange={e => setInputText(e.target.value)}
+        onChange={handleChangeInput}
         disabled={isLoading}
       />
       {!isLoading ? (
