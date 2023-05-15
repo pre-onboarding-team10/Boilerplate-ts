@@ -1,5 +1,17 @@
 :root {
-  --base-border-radius: calc(0.5 * 100px);
+  --base-border-radius: 5px;
+  --white: #fff;
+  --green-100: #d5f4f1;
+  --green-500: #2bc9ba;
   --gray-50: #ececec;
   --gray-100: #eaeaea;
+  --neutral-300: #dedede;
+  --neutral-600: #9f9f9f;
+  --neutral-700: #7d7d7d;
+}
+
+.ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
