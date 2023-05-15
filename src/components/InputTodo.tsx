@@ -1,5 +1,5 @@
 import { FaPlusCircle, FaSpinner } from 'react-icons/fa';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { createTodo } from '../api/todo';
 import useFocus from '../hooks/useFocus';
 import useLoading from '../hooks/useLoading';
@@ -7,13 +7,9 @@ import useTodo from '../hooks/useTodo';
 
 const InputTodo = () => {
   const [inputText, setInputText] = useState('');
-  const { ref, setFocus } = useFocus();
+  const { ref } = useFocus();
   const { isLoading, setIsLoading } = useLoading();
-  const { setTodoListData } = useTodo();
-
-  useEffect(() => {
-    setFocus();
-  }, [setFocus]);
+  const { setTodoListData: setTodos } = useTodo();
 
   const handleSubmit = useCallback(
     async (e: React.FormEvent<HTMLFormElement>) => {
@@ -30,7 +26,7 @@ const InputTodo = () => {
         const { data } = await createTodo(newItem);
 
         if (data) {
-          return setTodoListData(prev => [...prev, data]);
+          return setTodos(prev => [...prev, data]);
         }
       } catch (error) {
         console.error(error);
@@ -40,7 +36,7 @@ const InputTodo = () => {
         setIsLoading(false);
       }
     },
-    [inputText, setTodoListData]
+    [inputText, setTodos]
   );
 
   return (
