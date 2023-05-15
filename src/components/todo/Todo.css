@@ -1,10 +1,26 @@
+.search-container {
+  position: relative;
+}
+
 .form-container {
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
   width: 100%;
   margin-bottom: 20px;
+  border: 3px solid transparent;
   border-radius: var(--base-border-radius);
-  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.38);
+  box-shadow: 0 0px 1px 1px var(--neutral-300);
+}
+
+.form-container:hover {
+  border: 3px solid var(--neutral-300);
+}
+
+.form-container:focus,
+.form-container:focus-within,
+.form-container:active {
+  box-shadow: 0 0px 1px 1px var(--neutral-600);
 }
 
 .input-text {
@@ -15,6 +31,10 @@
   background-color: transparent;
   font-size: 1rem;
   font-weight: 400;
+}
+
+.input-text::placeholder {
+  color: var(--neutral-600);
 }
 
 .input-submit {

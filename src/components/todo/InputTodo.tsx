@@ -39,7 +39,7 @@ const InputTodo = ({ setTodos }: InputTodoProps) => {
       <form className="form-container" onSubmit={handleSubmitForm}>
         <FaSearch color="#7D7D7D" />
         <input
-          className="input-text"
+          className="input-text ellipsis"
           placeholder="Add new todo..."
           ref={ref}
           value={inputText}
