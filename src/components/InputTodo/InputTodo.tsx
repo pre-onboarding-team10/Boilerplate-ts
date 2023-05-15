@@ -60,7 +60,7 @@ const InputTodo = ({ setTodos }: SetTodoProps) => {
         onChange={handleInputChange}
         disabled={isLoading}
       />
-      {!isLoading ? <AddButton /> : <Spinner />}
+      {isLoading ? <Spinner /> : <AddButton />}
     </form>
   );
 };
