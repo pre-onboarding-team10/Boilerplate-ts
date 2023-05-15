@@ -1,9 +1,9 @@
-import stlyes from './EmptyList.module.css';
+import styles from './EmptyList.module.css';
 
-const EMPTY_CONTNET = '...';
+const EMPTY_CONTENT = '...';
 
 const EmptyList = () => {
-  return <div className={stlyes.empty_list}>{EMPTY_CONTNET}</div>;
+  return <div className={styles.empty_list}>{EMPTY_CONTENT}</div>;
 };
 
 export default EmptyList;
