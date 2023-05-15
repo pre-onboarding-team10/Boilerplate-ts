@@ -1,17 +1,13 @@
-import React from 'react';
 import TodoItem from './TodoItem';
-import { ITodoListData } from '../pages/Main';
+import useTodo from '../hooks/useTodo';
 
-interface ITodoListProps {
-  todos: ITodoListData[];
-  setTodos: React.Dispatch<React.SetStateAction<ITodoListData[]>>;
-}
+const TodoList = () => {
+  const { todoListData } = useTodo();
 
-const TodoList = ({ todos, setTodos }: ITodoListProps) => {
-  return todos.length ? (
+  return todoListData.length ? (
     <ul>
-      {todos.map(({ id, title }) => (
-        <TodoItem key={id} id={id} title={title} setTodos={setTodos} />
+      {todoListData.map(({ id, title }) => (
+        <TodoItem key={id} id={id} title={title} />
       ))}
     </ul>
   ) : (
