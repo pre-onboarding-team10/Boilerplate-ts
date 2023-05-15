@@ -13,7 +13,7 @@ type InputTodoProps = {
 const InputTodo = ({ setTodos }: InputTodoProps) => {
   const [inputText, setInputText] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const { ref, setFocus } = useFocus();
+  const { ref, setFocus } = useFocus<HTMLInputElement>();
 
   useEffect(setFocus, [setFocus]);
 

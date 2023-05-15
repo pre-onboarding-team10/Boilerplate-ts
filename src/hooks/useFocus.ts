@@ -1,7 +1,12 @@
-import { useRef } from 'react';
+import { RefObject, useRef } from 'react';
 
-const useFocus = () => {
-  const ref = useRef<HTMLInputElement>(null);
+type FocusRef<T> = {
+  ref: RefObject<T>;
+  setFocus: () => void;
+};
+
+const useFocus = <T extends HTMLElement>(): FocusRef<T> => {
+  const ref = useRef<T>(null);
   const setFocus = () => {
     ref.current && ref.current.focus();
   };
