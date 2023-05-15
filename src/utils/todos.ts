@@ -13,7 +13,7 @@ export async function handleCreateTodos(
     }
 
     const newItem = { title: trimmed };
-    const { data } = await createTodo(newItem);
+    const data = await createTodo(newItem);
 
     if (data) {
       setTodos(prev => [...prev, data]);
@@ -29,7 +29,7 @@ export async function handleGetTodos({
 }: {
   setTodoListData: SetStateType<TodoDataType[] | []>;
 }) {
-  const { data } = await getTodoList();
+  const data = await getTodoList();
   setTodoListData(data || []);
 }
 
