@@ -2,4 +2,7 @@
   --base-border-radius: calc(0.5 * 100px);
   --gray-50: #ececec;
   --gray-100: #eaeaea;
+  --grey: #dedede;
+  --green-100: #d5f4f1;
+  --green-500: #2bc9ba;
 }

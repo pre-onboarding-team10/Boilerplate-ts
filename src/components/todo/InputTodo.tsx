@@ -1,10 +1,17 @@
-import { SyntheticEvent, useCallback, useEffect, useState } from 'react';
+import {
+  ChangeEvent,
+  SyntheticEvent,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react';
 import './Todo.css';
 import { FaSpinner } from 'react-icons/fa';
 import useFocus from '../../hooks/useFocus';
 import { SetStateType, TodoDataType } from '../../types/types';
 import ItemButton from './ItemButton';
 import { handleCreateTodos } from '../../utils/todos';
+import RecommendList from '../recommend/RecommendList';
 
 type InputTodoProps = {
   setTodos: SetStateType<TodoDataType[]>;
@@ -16,6 +23,15 @@ const InputTodo = ({ setTodos }: InputTodoProps) => {
   const { ref, setFocus } = useFocus();
 
   useEffect(setFocus, [setFocus]);
+
+  const handleChangeInput = async (e: ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    setInputText(e.target.value);
+  };
+
+  const handleSelectRecommend = (recommend: string) => {
+    setInputText(recommend);
+  };
 
   const handleSubmitForm = useCallback(
     async (e: SyntheticEvent<HTMLFormElement>) => {
@@ -29,21 +45,29 @@ const InputTodo = ({ setTodos }: InputTodoProps) => {
   );
 
   return (
-    <form className="form-container" onSubmit={handleSubmitForm}>
-      <input
-        className="input-text"
-        placeholder="Add new todo..."
-        ref={ref}
-        value={inputText}
-        onChange={e => setInputText(e.target.value)}
-        disabled={isLoading}
+    <>
+      <form className="form-container" onSubmit={handleSubmitForm}>
+        <input
+          className="input-text"
+          placeholder="Add new todo..."
+          ref={ref}
+          value={inputText}
+          onChange={handleChangeInput}
+          disabled={isLoading}
+          type="search"
+        />
+        {isLoading ? (
+          <FaSpinner className="spinner" />
+        ) : (
+          <ItemButton mode="add" />
+        )}
+      </form>
+
+      <RecommendList
+        onSelect={handleSelectRecommend}
+        searchKeyword={inputText}
       />
-      {!isLoading ? (
-        <ItemButton mode="add" />
-      ) : (
-        <FaSpinner className="spinner" />
-      )}
-    </form>
+    </>
   );
 };
 

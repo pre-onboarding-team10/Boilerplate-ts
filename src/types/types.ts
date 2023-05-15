@@ -12,3 +12,8 @@ export type TodoInputType = {
 };
 
 export type SetStateType<T> = Dispatch<SetStateAction<T>>;
+
+export type RecommedListProps = {
+  searchKeyword: string;
+  onSelect: (option: string) => void;
+};

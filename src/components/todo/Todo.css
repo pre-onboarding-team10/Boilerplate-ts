@@ -3,7 +3,7 @@
   justify-content: space-evenly;
   width: 100%;
   margin-bottom: 20px;
-  border-radius: var(--base-border-radius);
+  border-radius: 6px;
   box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.38);
 }
 
@@ -11,7 +11,7 @@
   width: 85%;
   padding-right: 5px;
   padding-left: 10px;
-  border-radius: var(--base-border-radius);
+  border-radius: 6px;
   background-color: transparent;
   font-size: 1rem;
   font-weight: 400;
