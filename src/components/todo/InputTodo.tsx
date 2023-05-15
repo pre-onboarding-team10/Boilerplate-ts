@@ -1,49 +1,57 @@
-import { SyntheticEvent, useCallback, useEffect, useState } from 'react';
-import './Todo.css';
-import { FaSpinner } from 'react-icons/fa';
+import { SyntheticEvent, useCallback, useEffect } from 'react';
+import { FaSearch } from 'react-icons/fa';
+
+import Spinner from '../../assets/svg/Spinner';
 import useFocus from '../../hooks/useFocus';
+import useInput from '../../hooks/useInput';
+import useLoading from '../../hooks/useLoading';
+import useFetchKeyword from '../../hooks/useFetchKeyword';
 import { SetStateType, TodoDataType } from '../../types/types';
-import ItemButton from './ItemButton';
 import { handleCreateTodos } from '../../utils/todos';
+import DropdownList from '../search/DropdownList';
+import './Todo.css';
 
 type InputTodoProps = {
   setTodos: SetStateType<TodoDataType[]>;
 };
 
 const InputTodo = ({ setTodos }: InputTodoProps) => {
-  const [inputText, setInputText] = useState<string>('');
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [inputText, handleChange] = useInput();
+  const { keywordData } = useFetchKeyword({ inputText });
   const { ref, setFocus } = useFocus<HTMLInputElement>();
+  const [isLoading, createTodos] = useLoading<void>(handleCreateTodos);
 
-  useEffect(setFocus, [setFocus]);
+  const isEmptyData = keywordData.length === 0;
 
   const handleSubmitForm = useCallback(
     async (e: SyntheticEvent<HTMLFormElement>) => {
       e.preventDefault();
-      setIsLoading(true);
-      await handleCreateTodos(inputText, setTodos);
-      setIsLoading(false);
-      setInputText('');
+      createTodos(inputText, setTodos);
+      handleChange('');
     },
-    [inputText, setTodos]
+    [inputText, setTodos, createTodos, handleChange]
   );
 
+  useEffect(setFocus, [setFocus]);
+
   return (
-    <form className="form-container" onSubmit={handleSubmitForm}>
-      <input
-        className="input-text"
-        placeholder="Add new todo..."
-        ref={ref}
-        value={inputText}
-        onChange={e => setInputText(e.target.value)}
-        disabled={isLoading}
-      />
-      {!isLoading ? (
-        <ItemButton mode="add" />
-      ) : (
-        <FaSpinner className="spinner" />
+    <div className="search-container">
+      <form className="form-container" onSubmit={handleSubmitForm}>
+        <FaSearch color="#7D7D7D" />
+        <input
+          className="input-text"
+          placeholder="Add new todo..."
+          ref={ref}
+          value={inputText}
+          onChange={e => handleChange(e.target.value)}
+          disabled={isLoading}
+        />
+        {isLoading && <Spinner />}
+      </form>
+      {!isEmptyData && (
+        <DropdownList inputText={inputText} keywordData={keywordData} />
       )}
-    </form>
+    </div>
   );
 };
 

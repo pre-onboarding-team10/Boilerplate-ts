@@ -1,9 +1,10 @@
-import { FaSpinner } from 'react-icons/fa';
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 
+import Spinner from '../../assets/svg/Spinner';
+import useLoading from '../../hooks/useLoading';
 import { SetStateType, TodoDataType } from '../../types/types';
-import ItemButton from './ItemButton';
 import { handleRemoveTodo } from '../../utils/todos';
+import DeleteButton from './DeleteButton';
 
 type TodoItemProps = {
   id: string;
@@ -12,28 +13,20 @@ type TodoItemProps = {
 };
 
 const TodoItem = ({ id, title, setTodos }: TodoItemProps) => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, deleteTodo] = useLoading(handleRemoveTodo);
 
-  const handleRemoveTodoCallback = useCallback(async () => {
-    try {
-      setIsLoading(true);
-      await handleRemoveTodo(id, setTodos);
-    } catch (error) {
-      console.error(error);
-      throw new Error('Something went wrong.');
-    } finally {
-      setIsLoading(false);
-    }
-  }, [id, setTodos]);
+  const hanldeClickRemove = useCallback(async () => {
+    deleteTodo(id, setTodos);
+  }, [id, setTodos, deleteTodo]);
 
   return (
     <li className="item">
       <span>{title}</span>
       <div className="item-option">
-        {!isLoading ? (
-          <ItemButton mode="remove" handleClick={handleRemoveTodoCallback} />
+        {isLoading ? (
+          <Spinner />
         ) : (
-          <FaSpinner className="spinner" />
+          <DeleteButton handleClick={hanldeClickRemove} />
         )}
       </div>
     </li>
