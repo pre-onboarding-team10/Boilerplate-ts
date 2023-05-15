@@ -12,3 +12,5 @@ export type TodoInputType = {
 };
 
 export type SetStateType<T> = Dispatch<SetStateAction<T>>;
+
+export type SearchResultType = string[] | [];
