@@ -1,34 +1,33 @@
+import { TodoInputType } from '../types/types';
 import apiRequest from './index';
-import { Todo } from '../types';
 
 const RESOURCE = '/todos';
 
-export const getTodoList = async (): Promise<Todo[]> => {
+export const getTodoList = async () => {
   try {
-    const response = await apiRequest.get<Todo[]>(`${RESOURCE}`);
+    const response = await apiRequest.get({ url: `${RESOURCE}` });
 
-    return response.data;
+    return response;
   } catch (error) {
     throw new Error('API getTodoList error');
   }
 };
 
-export const createTodo = async (data: { title: string }): Promise<Todo> => {
+export const createTodo = async (data: TodoInputType) => {
   try {
-    const response = await apiRequest.post<Todo, typeof data>(
-      `${RESOURCE}`,
-      data
-    );
+    const response = await apiRequest.post({ url: `${RESOURCE}`, data });
 
-    return response.data;
+    return response;
   } catch (error) {
     throw new Error('API createTodo error');
   }
 };
 
-export const deleteTodo = async (id: string): Promise<void> => {
+export const deleteTodo = async (id: string) => {
   try {
-    await apiRequest.delete(`${RESOURCE}/${id}`);
+    const response = await apiRequest.delete({ url: `${RESOURCE}/${id}` });
+
+    return response;
   } catch (error) {
     throw new Error('API deleteTodo error');
   }

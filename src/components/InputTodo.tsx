@@ -33,7 +33,7 @@ const InputTodo = ({ setTodos }: InputTodoProps) => {
         const data = await createTodo(newItem);
 
         if (data) {
-          return setTodos(prev => [...prev, data]);
+          return setTodos(prev => [...prev, data] as Todo[]);
         }
       } catch (error) {
         console.error(error);

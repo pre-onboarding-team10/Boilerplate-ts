@@ -1,11 +1,6 @@
-import { useRef, RefObject } from 'react';
+import { useRef } from 'react';
 
-type UseFocusReturnType = {
-  ref: RefObject<HTMLInputElement>;
-  setFocus: () => void;
-};
-
-const useFocus = (): UseFocusReturnType => {
+const useFocus = () => {
   const ref = useRef<HTMLInputElement>(null);
 
   const setFocus = () => {
