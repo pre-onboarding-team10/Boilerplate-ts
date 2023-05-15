@@ -1,0 +1,28 @@
+.suggestion-dropdown {
+  position: absolute;
+  top: 300px;
+  width: 70%;
+  background-color: white;
+  border: 1px solid #ccc;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1;
+}
+
+.highlighted {
+  color: #2bc9ba;
+  font-weight: bold;
+}
+
+.suggestion-item {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background-color: #f2f2f2;
+}
+
+.suggestion-item.clicked {
+  background-color: #d5f4f1;
+}
