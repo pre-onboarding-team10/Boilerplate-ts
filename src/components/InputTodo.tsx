@@ -3,6 +3,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { createTodo } from '../api/todo';
 import useFocus from '../hooks/useFocus';
 import { ITodoListData } from '../pages/Main';
+import useLoading from '../hooks/useLoading';
 
 interface InputTodoProps {
   setTodos: React.Dispatch<React.SetStateAction<ITodoListData[]>>;
@@ -10,8 +11,8 @@ interface InputTodoProps {
 
 const InputTodo = ({ setTodos }: InputTodoProps) => {
   const [inputText, setInputText] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
   const { ref, setFocus } = useFocus();
+  const { isLoading, setIsLoading } = useLoading();
 
   useEffect(() => {
     setFocus();
