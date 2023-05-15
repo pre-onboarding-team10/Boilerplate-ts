@@ -1,12 +1,12 @@
 import { FaTrash } from 'react-icons/fa';
 
-type Props = {
-  handleClick?: () => void;
+type DeleteButtonProps = {
+  handleClick: () => void;
 };
 
-const DeleteButton = ({ handleClick }: Props) => {
+const DeleteButton = ({ handleClick }: DeleteButtonProps) => {
   return (
-    <button onClick={() => handleClick!()}>
+    <button onClick={() => handleClick()}>
       <FaTrash className="btn-trash" />
     </button>
   );
