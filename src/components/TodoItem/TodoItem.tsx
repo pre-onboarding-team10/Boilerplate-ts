@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react';
 import { deleteTodo } from '../../api/todo';
 import styles from './TodoItem.module.css';
 import Spinner from '../Spinner/Spinner';
-import { SetTodoProps, Todo } from '../../intefaces';
+import { SetTodoProps, Todo } from '../../interfaces';
 import { FaTrash } from 'react-icons/fa';
 
 const TodoItem = ({

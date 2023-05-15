@@ -5,7 +5,7 @@ import useFocus from '../../hooks/useFocus';
 import styles from './InputTodo.module.css';
 import AddButton from '../AddButton/AddButton';
 import Spinner from '../Spinner/Spinner';
-import { SetTodoProps } from '../../intefaces';
+import { SetTodoProps } from '../../interfaces';
 
 const PLACEHOLDER_TEXT = 'Add new todo...';
 

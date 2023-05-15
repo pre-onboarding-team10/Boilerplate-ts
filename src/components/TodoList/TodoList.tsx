@@ -1,6 +1,6 @@
 import TodoItem from '../TodoItem/TodoItem';
 import styles from './TodoList.module.css';
-import { Todo, SetTodoProps } from '../../intefaces';
+import { Todo, SetTodoProps } from '../../interfaces';
 
 interface TodoListProps extends SetTodoProps {
   todos: Todo[];

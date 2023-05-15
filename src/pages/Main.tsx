@@ -4,7 +4,7 @@ import InputTodo from '../components/InputTodo/InputTodo';
 import TodoList from '../components/TodoList/TodoList';
 import { getTodoList } from '../api/todo';
 import EmptyList from '../components/EmptyList/EmptyList';
-import { Todo } from '../intefaces';
+import { Todo } from '../interfaces';
 
 const Main = () => {
   const [todoListData, setTodoListData] = useState<Todo[]>([]);
