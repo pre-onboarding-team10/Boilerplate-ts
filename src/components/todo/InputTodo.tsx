@@ -1,10 +1,12 @@
 import { SyntheticEvent, useCallback, useEffect, useState } from 'react';
 import './Todo.css';
-import { FaSpinner } from 'react-icons/fa';
+import { ImSpinner8 } from 'react-icons/im';
 import useFocus from '../../hooks/useFocus';
 import { SetStateType, TodoDataType } from '../../types/types';
 import ItemButton from './ItemButton';
 import { handleCreateTodos } from '../../utils/todos';
+import SuggestionList from '../suggest/SuggestionList';
+import { BiSearch } from 'react-icons/bi';
 
 type InputTodoProps = {
   setTodos: SetStateType<TodoDataType[]>;
@@ -29,21 +31,25 @@ const InputTodo = ({ setTodos }: InputTodoProps) => {
   );
 
   return (
-    <form className="form-container" onSubmit={handleSubmitForm}>
-      <input
-        className="input-text"
-        placeholder="Add new todo..."
-        ref={ref}
-        value={inputText}
-        onChange={e => setInputText(e.target.value)}
-        disabled={isLoading}
+    <>
+      <form className="form-container" onSubmit={handleSubmitForm}>
+        <BiSearch className="searcher" />
+        <input
+          className="input-text"
+          placeholder="Placeholder"
+          ref={ref}
+          value={inputText}
+          onChange={e => setInputText(e.target.value)}
+          disabled={isLoading}
+        />
+        {!isLoading ? null : <ImSpinner8 className="spinner" />}
+      </form>
+      <SuggestionList
+        inputText={inputText}
+        setInputText={setInputText}
+        setTodos={setTodos}
       />
-      {!isLoading ? (
-        <ItemButton mode="add" />
-      ) : (
-        <FaSpinner className="spinner" />
-      )}
-    </form>
+    </>
   );
 };
 
