@@ -11,6 +11,7 @@
   z-index: 5555;
   scrollbar-width: thin;
   scrollbar-color: rgba(0, 0, 0, 0.48);
+  overflow: hidden;
 }
 
 .dropdown-item {
