@@ -1,0 +1,65 @@
+.suggestions {
+  background-color: #fff;
+  list-style: none;
+  border-radius: 20px;
+  padding: 10px;
+  width: 580px;
+  max-height: 200px;
+  overflow-y: scroll;
+  position: absolute;
+  border: 1px solid #dedede;
+  box-shadow: 0px 0px 1px rgba(50, 50, 50, 0.05),
+    0px 2px 4px rgba(50, 50, 50, 0.1);
+  border-radius: 5px;
+}
+.suggestion_item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 3px;
+  padding: 5px;
+  margin: 10px 0;
+}
+.suggestion_item:hover {
+  background-color: #f2f2f2;
+}
+.suggestion_item:active {
+  background-color: #d5f4f1;
+}
+.highlight {
+  color: #2bc9ba;
+}
+
+.suggestions::-webkit-scrollbar {
+  width: 4px;
+}
+
+.suggestions::-webkit-scrollbar-thumb {
+  background: rgb(133, 133, 133);
+  border-radius: 10px;
+}
+
+.suggestions::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0);
+  background-color: #00ff0000;
+}
+
+.spinner_container {
+  display: flex;
+  justify-content: center;
+}
+.suggestions_spinner {
+  display: flex;
+  align-self: center;
+  font-size: 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
