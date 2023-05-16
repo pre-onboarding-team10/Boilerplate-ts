@@ -24,7 +24,7 @@ const DropdownItem = ({
   };
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center' }}>
+    <div className="dropdown-item_container">
       <li ref={ref} onClick={handleClick} className="dropdown-item ellipsis">
         {keyword}
       </li>
