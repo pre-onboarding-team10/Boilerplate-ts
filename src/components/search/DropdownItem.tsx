@@ -25,9 +25,12 @@ const DropdownItem = ({
 
   return (
     <div className="dropdown-item_container">
-      <li ref={ref} onClick={handleClick} className="dropdown-item ellipsis">
-        {keyword}
-      </li>
+      <li
+        ref={ref}
+        dangerouslySetInnerHTML={{ __html: keyword }}
+        onClick={handleClick}
+        className="dropdown-item ellipsis"
+      />
       {isLoading && <Spinner />}
     </div>
   );

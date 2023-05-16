@@ -38,3 +38,7 @@
 .keyword-mark {
   color: var(--green-500);
 }
+
+.highlight-text {
+  color: var(--green-500);
+}

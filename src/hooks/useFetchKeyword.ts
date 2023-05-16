@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
-import { SearchResultType } from '../types/types';
+
 import { getKeyword } from '../api/search';
+import { SearchResultType } from '../types/types';
+import { makeHighlightText } from '../utils/makeHighlightText';
 import useLoading from './useLoading';
 
 type KeywordReturnType = {
@@ -17,7 +19,9 @@ const useFetchKeyword = (inputText: string): KeywordReturnType => {
     if (trimmed) {
       try {
         const { data } = await getKeyword(inputText);
-        setKeywordData(data.result);
+        const highlightText = makeHighlightText(data, trimmed);
+
+        setKeywordData(highlightText);
       } catch (error) {
         console.error('Something went wrong');
       }
@@ -32,6 +36,7 @@ const useFetchKeyword = (inputText: string): KeywordReturnType => {
     }, 500);
     return () => clearTimeout(timer);
   }, [inputText]);
+  // getting data every 0.5s if 'fetchData' is in the dependency array
 
   return { keywordData, isLoading };
 };
