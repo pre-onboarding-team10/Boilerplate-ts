@@ -25,13 +25,13 @@
   border-radius: 3px;
 }
 
-.dropdown-item:hover {
+.dropdown-item_container:hover {
   background-color: var(--neutral-100);
 }
 
-.dropdown-item:focus,
-.dropdown-item:focus-within,
-.dropdown-item:active {
+.dropdown-item_container:focus,
+.dropdown-item_container:focus-within,
+.dropdown-item_container:active {
   background-color: var(--green-100);
 }
 
