@@ -17,21 +17,24 @@ type InputTodoProps = {
   setTodos: SetStateType<TodoDataType[]>;
 };
 
+const DELAY_IN_MS = 500;
+
 const InputTodo = ({ setTodos }: InputTodoProps) => {
   const [inputText, setInputText] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [debouncedInputText, setDebouncedInputText] = useState<string>('');
   const { ref, setFocus } = useFocus();
 
   useEffect(setFocus, [setFocus]);
 
-  const handleChangeInput = async (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChangeInput = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     setInputText(e.target.value);
-  };
+  }, []);
 
-  const handleSelectRecommend = (recommend: string) => {
+  const handleSelectRecommend = useCallback((recommend: string) => {
     setInputText(recommend);
-  };
+  }, []);
 
   const handleSubmitForm = useCallback(
     async (e: SyntheticEvent<HTMLFormElement>) => {
@@ -43,6 +46,15 @@ const InputTodo = ({ setTodos }: InputTodoProps) => {
     },
     [inputText, setTodos]
   );
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setDebouncedInputText(inputText);
+    }, DELAY_IN_MS);
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [inputText]);
 
   return (
     <>
@@ -57,13 +69,12 @@ const InputTodo = ({ setTodos }: InputTodoProps) => {
           disabled={isLoading}
           type="text"
         />
-
-        {isLoading ? <Spinner /> : null}
+        {isLoading && debouncedInputText === '' && <Spinner />}
       </form>
 
       <RecommendDropDownList
         onSelect={handleSelectRecommend}
-        searchKeyword={inputText}
+        searchKeyword={debouncedInputText}
       />
     </>
   );
