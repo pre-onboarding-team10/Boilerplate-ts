@@ -1,3 +1,8 @@
+.dropdown-list_inner {
+  height: 150px;
+  overflow-y: auto;
+}
+
 .dropdown-list {
   position: absolute;
   width: 100%;
@@ -6,18 +11,18 @@
   border: 1px solid #eee;
   border-radius: var(--base-border-radius);
   background-color: var(--white);
-  overflow-y: scroll;
   list-style: none;
   z-index: 5555;
+  overflow: hidden;
   scrollbar-width: thin;
   scrollbar-color: rgba(0, 0, 0, 0.48);
-  overflow: hidden;
 }
 
 .dropdown-item_container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-radius: var(--base-border-radius);
 }
 
 .dropdown-item {

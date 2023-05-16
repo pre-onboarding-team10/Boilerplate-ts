@@ -19,14 +19,16 @@ const DropdownList = ({
 }: DropdownListProps) => {
   return (
     <ul className="dropdown-list">
-      {keywordData.map((keyword, index) => (
-        <DropdownItem
-          key={index}
-          keyword={keyword}
-          handleChange={handleChange}
-          setTodos={setTodos}
-        />
-      ))}
+      <div className="dropdown-list_inner">
+        {keywordData.map((keyword, index) => (
+          <DropdownItem
+            key={index}
+            keyword={keyword}
+            handleChange={handleChange}
+            setTodos={setTodos}
+          />
+        ))}
+      </div>
     </ul>
   );
 };
