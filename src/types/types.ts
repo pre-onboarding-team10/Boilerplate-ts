@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from 'react';
+import React,{ Dispatch, SetStateAction } from 'react';
 
 export type TodoDataType = {
   result: string[];

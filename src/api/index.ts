@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios';
-import { TodoDataType, TodoInputType } from '../types/types';
+import { TodoInputType } from '../types/types';
 
 export type BaseInstance = {
   url: string;

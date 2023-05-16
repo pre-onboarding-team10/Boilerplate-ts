@@ -3,7 +3,6 @@ import './Todo.css';
 import { ImSpinner8 } from 'react-icons/im';
 import useFocus from '../../hooks/useFocus';
 import { SetStateType, TodoDataType } from '../../types/types';
-import ItemButton from './ItemButton';
 import { handleCreateTodos } from '../../utils/todos';
 import SuggestionList from '../suggest/SuggestionList';
 import { BiSearch } from 'react-icons/bi';

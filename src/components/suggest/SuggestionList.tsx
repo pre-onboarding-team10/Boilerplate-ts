@@ -27,7 +27,6 @@ const SuggestionList = ({
     getSuggestList(inputText, nowPage).then(res => {
       const { data } = res;
       setSuggestions(data);
-      console.log(data);
     });
     setIsLoading(false);
   };

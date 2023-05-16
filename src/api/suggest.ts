@@ -1,4 +1,3 @@
-import axios from 'axios';
 import apiRequest from './index';
 
 export const getSuggestList = async (inputText: string, nowPage: number) => {
