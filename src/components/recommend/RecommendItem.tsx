@@ -1,23 +1,18 @@
+import { RecommendItemProps } from '../../types/types';
 import './Recommend.css';
-
-type RecommedItemProps = {
-  option: string;
-  selectItem: (option: string) => void;
-  searchKeyword: string;
-};
 
 const RecommendItem = ({
   option,
   selectItem,
   searchKeyword,
-}: RecommedItemProps) => {
+}: RecommendItemProps) => {
   const handleClick = () => {
     selectItem(option);
   };
   const index = option.toLowerCase().indexOf(searchKeyword.toLowerCase());
 
   return (
-    <li key={option} className="recommend_item" onClick={handleClick}>
+    <li className="recommend_item" onClick={handleClick}>
       {index !== -1 ? (
         <>
           <span>{option.substring(0, index)}</span>

@@ -6,12 +6,12 @@ import {
   useState,
 } from 'react';
 import './Todo.css';
-import { FaSpinner } from 'react-icons/fa';
 import useFocus from '../../hooks/useFocus';
 import { SetStateType, TodoDataType } from '../../types/types';
-import ItemButton from './ItemButton';
 import { handleCreateTodos } from '../../utils/todos';
-import RecommendList from '../recommend/RecommendList';
+import RecommendDropDownList from '../recommend/RecommendDropdownList';
+import Spinner from '../base/Spinner';
+import { FaSearch } from 'react-icons/fa';
 
 type InputTodoProps = {
   setTodos: SetStateType<TodoDataType[]>;
@@ -47,6 +47,7 @@ const InputTodo = ({ setTodos }: InputTodoProps) => {
   return (
     <>
       <form className="form-container" onSubmit={handleSubmitForm}>
+        <FaSearch className="search-icon" />
         <input
           className="input-text"
           placeholder="Add new todo..."
@@ -54,16 +55,13 @@ const InputTodo = ({ setTodos }: InputTodoProps) => {
           value={inputText}
           onChange={handleChangeInput}
           disabled={isLoading}
-          type="search"
+          type="text"
         />
-        {isLoading ? (
-          <FaSpinner className="spinner" />
-        ) : (
-          <ItemButton mode="add" />
-        )}
+
+        {isLoading ? <Spinner />: null}
       </form>
 
-      <RecommendList
+      <RecommendDropDownList
         onSelect={handleSelectRecommend}
         searchKeyword={inputText}
       />
