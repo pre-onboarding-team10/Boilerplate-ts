@@ -1,12 +1,6 @@
-import React from 'react';
-import { FaSpinner } from 'react-icons/fa';
-
+import { ImSpinner8 } from 'react-icons/im';
 const Spinner = () => {
-  return (
-    <>
-      <FaSpinner className="spinner" />
-    </>
-  );
+  return <ImSpinner8 className="spinner" />;
 };
 
 export default Spinner;
