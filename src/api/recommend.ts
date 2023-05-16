@@ -6,11 +6,11 @@ const API_SEARCH_ERROR = 'API getRecommendList error';
 
 export const getRecommendList = async (
   keyword: string,
-  page: number
+  page: number, limit: number
 ): Promise<RecommendDataType> => {
   try {
     const response = await apiRequest.get<RecommendDataType>(`${RESOURCE}`, {
-      params: { q: keyword, page: page },
+      params: { q: keyword, page, limit },
     });
     return response.data;
   } catch (error) {

@@ -5,6 +5,6 @@ export async function handleGetRecommends(
   page: number,
   limit: number
 ) {
-  const data = await getRecommendList(keyword, page);
+  const data = await getRecommendList(keyword, page, limit);
   return data;
 }
