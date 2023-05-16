@@ -16,10 +16,11 @@ type InputTodoProps = {
 };
 
 const InputTodo = ({ setTodos }: InputTodoProps) => {
-  const [inputText, handleChange] = useInput();
-  const { keywordData } = useFetchKeyword({ inputText });
-  const { ref, setFocus } = useFocus<HTMLInputElement>();
   const [isLoading, createTodos] = useLoading<void>(handleCreateTodos);
+  const [inputText, handleChange] = useInput();
+  const { keywordData, isLoading: isKeywordLoading } =
+    useFetchKeyword(inputText);
+  const { ref, setFocus } = useFocus<HTMLInputElement>();
 
   const isEmptyData = keywordData.length === 0;
 
@@ -37,16 +38,18 @@ const InputTodo = ({ setTodos }: InputTodoProps) => {
   return (
     <div className="search-container">
       <form className="form-container" onSubmit={handleSubmitForm}>
-        <FaSearch color="#7D7D7D" />
-        <input
-          className="input-text ellipsis"
-          placeholder="Add new todo..."
-          ref={ref}
-          value={inputText}
-          onChange={e => handleChange(e.target.value)}
-          disabled={isLoading}
-        />
-        {isLoading && <Spinner />}
+        <div className="input-container">
+          <FaSearch color="#7D7D7D" />
+          <input
+            className="input-text ellipsis"
+            placeholder="Add new todo..."
+            ref={ref}
+            value={inputText}
+            onChange={e => handleChange(e.target.value)}
+            disabled={isLoading}
+          />
+        </div>
+        {isKeywordLoading && <Spinner />}
       </form>
       {!isEmptyData && (
         <DropdownList inputText={inputText} keywordData={keywordData} />
