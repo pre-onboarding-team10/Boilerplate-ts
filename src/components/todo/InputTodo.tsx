@@ -2,10 +2,10 @@ import { SyntheticEvent, useCallback, useEffect } from 'react';
 import { FaSearch } from 'react-icons/fa';
 
 import Spinner from '../../assets/svg/Spinner';
+import useFetchKeyword from '../../hooks/useFetchKeyword';
 import useFocus from '../../hooks/useFocus';
 import useInput from '../../hooks/useInput';
 import useLoading from '../../hooks/useLoading';
-import useFetchKeyword from '../../hooks/useFetchKeyword';
 import { SetStateType, TodoDataType } from '../../types/types';
 import { handleCreateTodos } from '../../utils/todos';
 import DropdownList from '../search/DropdownList';
@@ -54,7 +54,11 @@ const InputTodo = ({ setTodos }: InputTodoProps) => {
         )}
       </form>
       {!isEmptyData && (
-        <DropdownList inputText={inputText} keywordData={keywordData} />
+        <DropdownList
+          handleChange={handleChange}
+          keywordData={keywordData}
+          setTodos={setTodos}
+        />
       )}
     </div>
   );

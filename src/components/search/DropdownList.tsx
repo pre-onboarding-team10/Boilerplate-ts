@@ -1,17 +1,31 @@
-import { SearchResultType } from '../../types/types';
+import {
+  SearchResultType,
+  SetStateType,
+  TodoDataType,
+} from '../../types/types';
 import './Dropdown.css';
 import DropdownItem from './DropdownItem';
 
 type DropdownListProps = {
-  inputText: string;
+  handleChange: (value: string) => void;
   keywordData: SearchResultType;
+  setTodos: SetStateType<TodoDataType[]>;
 };
 
-const DropdownList = ({ inputText, keywordData }: DropdownListProps) => {
+const DropdownList = ({
+  handleChange,
+  keywordData,
+  setTodos,
+}: DropdownListProps) => {
   return (
     <ul className="dropdown-list">
       {keywordData.map((keyword, index) => (
-        <DropdownItem key={index} keyword={keyword} inputText={inputText} />
+        <DropdownItem
+          key={index}
+          keyword={keyword}
+          handleChange={handleChange}
+          setTodos={setTodos}
+        />
       ))}
     </ul>
   );
