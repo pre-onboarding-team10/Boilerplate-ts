@@ -49,7 +49,9 @@ const InputTodo = ({ setTodos }: InputTodoProps) => {
             disabled={isLoading}
           />
         </div>
-        {(isLoading || isKeywordLoading) && <Spinner />}
+        {(isLoading || isKeywordLoading) && (
+          <Spinner className="spinner_input" />
+        )}
       </form>
       {!isEmptyData && (
         <DropdownList inputText={inputText} keywordData={keywordData} />
