@@ -1,9 +1,8 @@
-import axios, { AxiosRequestConfig } from 'axios';
+import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import { TodoInputType } from '../types/types';
 
-export type BaseInstance = {
+type BaseInstance = {
   url: string;
-  request?: AxiosRequestConfig;
   data?: TodoInputType;
   config?: AxiosRequestConfig;
 };
@@ -11,7 +10,7 @@ export type BaseInstance = {
 const baseURL = process.env.REACT_APP_API_URL;
 const token = process.env.REACT_APP_TOKEN;
 
-const baseInstance = axios.create({
+const baseInstance: AxiosInstance = axios.create({
   baseURL,
   headers: {
     Authorization: `Bearer ${token}`,
@@ -21,8 +20,8 @@ const baseInstance = axios.create({
 baseInstance.interceptors.response.use(({ data }) => data);
 
 const apiRequest = {
-  get: ({ url, request }: BaseInstance) => baseInstance.get(url, request),
-  delete: ({ url, request }: BaseInstance) => baseInstance.delete(url, request),
+  get: ({ url, config }: BaseInstance) => baseInstance.get(url, config),
+  delete: ({ url, config }: BaseInstance) => baseInstance.delete(url, config),
   post: ({ url, data, config }: BaseInstance) =>
     baseInstance.post(url, data, config),
 };

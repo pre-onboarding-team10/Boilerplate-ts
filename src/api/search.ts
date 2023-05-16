@@ -1,4 +1,4 @@
-import apiRequest from '.';
+import apiRequest from './index';
 
 const RESOURCE = '/search';
 
@@ -6,7 +6,7 @@ export const getSearchList = async (keyword: string, page: number) => {
   try {
     const response = await apiRequest.get({
       url: `${RESOURCE}`,
-      request: { params: { q: keyword, page: page } },
+      config: { params: { q: keyword, page: page } },
     });
 
     return response;
