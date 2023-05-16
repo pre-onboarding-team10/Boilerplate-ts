@@ -1,0 +1,33 @@
+.dropdown-list {
+  position: absolute;
+  width: 100%;
+  max-height: 164px;
+  padding: 5px;
+  border: 1px solid #eee;
+  border-radius: var(--base-border-radius);
+  background-color: var(--white);
+  overflow-y: scroll;
+  list-style: none;
+  z-index: 5555;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.48);
+}
+
+.dropdown-item {
+  padding: 5px 5px;
+  border-radius: 3px;
+}
+
+.dropdown-item:hover {
+  background-color: var(--neutral-100);
+}
+
+.dropdown-item:focus,
+.dropdown-item:focus-within,
+.dropdown-item:active {
+  background-color: var(--green-100);
+}
+
+.keyword-mark {
+  color: var(--green-500);
+}
