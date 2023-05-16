@@ -10,20 +10,28 @@ const axiosInstance: AxiosInstance = axios.create({
   },
 });
 
-axiosInstance.interceptors.response.use((response) => response.data);
+axiosInstance.interceptors.response.use(response => response.data);
 
 type ApiRequestProps = {
-  get: <T>(url: string, config?: AxiosRequestConfig) => Promise<AxiosResponse<T>>;
-  post: <T, D>(url: string, data: D, config?: AxiosRequestConfig) => Promise<AxiosResponse<T>>;
-  delete: <T>(url: string, config?: AxiosRequestConfig) => Promise<AxiosResponse<T>>;
-}
+  get: <T>(
+    url: string,
+    config?: AxiosRequestConfig
+  ) => Promise<AxiosResponse<T>>;
+  post: <T, D>(
+    url: string,
+    data: D,
+    config?: AxiosRequestConfig
+  ) => Promise<AxiosResponse<T>>;
+  delete: <T>(
+    url: string,
+    config?: AxiosRequestConfig
+  ) => Promise<AxiosResponse<T>>;
+};
 
 const apiRequest: ApiRequestProps = {
   get: (url, config) => axiosInstance.get(url, config),
-  post: (url, data, config) =>
-    axiosInstance.post(url, data, config),
+  post: (url, data, config) => axiosInstance.post(url, data, config),
   delete: (url, config) => axiosInstance.delete(url, config),
-
 };
 
 export default apiRequest;

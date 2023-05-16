@@ -1,8 +1,8 @@
 import { createTodo, deleteTodo, getTodoList } from '../api/todo';
 import { SetStateType, TodoDataType } from '../types/types';
 
-const WRITE_DATA = "Please write something"
-const ERROR_MESSAGE = "Something went wrong."
+const WRITE_DATA = 'Please write something';
+const ERROR_MESSAGE = 'Something went wrong.';
 
 export async function handleCreateTodos(
   inputText: string,

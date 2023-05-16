@@ -58,7 +58,7 @@ const InputTodo = ({ setTodos }: InputTodoProps) => {
           type="text"
         />
 
-        {isLoading ? <Spinner />: null}
+        {isLoading ? <Spinner /> : null}
       </form>
 
       <RecommendDropDownList

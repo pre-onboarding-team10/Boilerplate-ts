@@ -12,9 +12,14 @@ export const getTodoList = async (): Promise<TodoDataType[]> => {
   }
 };
 
-export const createTodo = async (data: TodoInputType): Promise<TodoDataType> => {
+export const createTodo = async (
+  data: TodoInputType
+): Promise<TodoDataType> => {
   try {
-    const response = await apiRequest.post<TodoDataType, typeof data>(`${RESOURCE}`, data);
+    const response = await apiRequest.post<TodoDataType, typeof data>(
+      `${RESOURCE}`,
+      data
+    );
     return response.data;
   } catch (error) {
     throw new Error('API createTodo error');

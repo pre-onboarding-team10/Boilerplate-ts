@@ -20,13 +20,13 @@ export type TodoItemProps = {
 export type SetStateType<T> = Dispatch<SetStateAction<T>>;
 
 export type RecommendDataType = {
-  limit: number,
-  page: number,
-  q: string,
-  qty: number,
-  result: string[],
-  total: number,
-}
+  limit: number;
+  page: number;
+  q: string;
+  qty: number;
+  result: string[];
+  total: number;
+};
 
 export type RecommendListProps = {
   searchKeyword: string;

@@ -10,7 +10,10 @@ const DELAY_IN_MS = 500;
 const INITIAL_PAGE = 1;
 const PAGE_SIZE = 10;
 
-const RecommendDropDownList = ({ searchKeyword, onSelect }: RecommendListProps) => {
+const RecommendDropDownList = ({
+  searchKeyword,
+  onSelect,
+}: RecommendListProps) => {
   const [recommendDataList, setRecommendDataList] = useState<string[]>([]);
   const [currentPage, setCurrentPage] = useState(INITIAL_PAGE);
   const [hasMoreData, setHasMoreData] = useState(true);
@@ -67,7 +70,11 @@ const RecommendDropDownList = ({ searchKeyword, onSelect }: RecommendListProps) 
           searchKeyword={searchKeyword}
         />
       ))}
-      {isLoading && <li className="loading_data"><Spinner /></li>}
+      {isLoading && (
+        <li className="loading_data">
+          <Spinner />
+        </li>
+      )}
       {hasMoreData && !isLoading && (
         <li className="more_data">
           <FaEllipsisH />
