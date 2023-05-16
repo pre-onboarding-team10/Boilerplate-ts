@@ -31,7 +31,7 @@ const useFetchKeyword = (inputText: string): KeywordReturnType => {
       fetchData();
     }, 500);
     return () => clearTimeout(timer);
-  }, [fetchData, inputText]);
+  }, [inputText]);
 
   return { keywordData, isLoading };
 };
