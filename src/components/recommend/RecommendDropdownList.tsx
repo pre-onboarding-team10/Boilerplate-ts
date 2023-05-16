@@ -62,7 +62,7 @@ const RecommendDropDownList = ({
 
   return (
     <ul className="recommend_list" onScroll={handleScroll}>
-      {recommendDataList.map((option, index) => (
+      {recommendDataList.map(option => (
         <RecommendItem
           key={option}
           option={option}
