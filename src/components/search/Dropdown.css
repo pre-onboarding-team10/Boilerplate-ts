@@ -1,6 +1,7 @@
 .dropdown-list_inner {
   height: 150px;
-  overflow-y: auto;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .dropdown-list {
@@ -25,11 +26,6 @@
   border-radius: var(--base-border-radius);
 }
 
-.dropdown-item {
-  padding: 5px 5px;
-  border-radius: 3px;
-}
-
 .dropdown-item_container:hover {
   background-color: var(--neutral-100);
 }
@@ -40,10 +36,19 @@
   background-color: var(--green-100);
 }
 
+.dropdown-item {
+  padding: 5px 5px;
+  border-radius: 3px;
+}
+
 .keyword-mark {
   color: var(--green-500);
 }
 
 .highlight-text {
   color: var(--green-500);
+}
+
+.spinner-item {
+  margin-right: 10px;
 }

@@ -31,7 +31,7 @@ const DropdownItem = ({
         onClick={handleClick}
         className="dropdown-item ellipsis"
       />
-      {isLoading && <Spinner />}
+      {isLoading && <Spinner className="spinner-item" />}
     </div>
   );
 };
