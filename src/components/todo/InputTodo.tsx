@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
-import './Todo.css';
+
+import useFetchSuggestions from '../../hooks/useFetchSuggestions';
+import useFetchTodo from '../../hooks/useFetchTodo';
 import useFocus from '../../hooks/useFocus';
 import { SetStateType, TodoDataType } from '../../types/types';
-import useFetchTodo from '../../hooks/useFetchTodo';
+import Spinner from '../icons/Spinner';
+import SearchIcon from '../icons/SearchIcon';
 import Dropdown from './Dropdown';
-import useFetchSuggestions from '../../hooks/useFetchSuggestions';
-import SearchIcon from './SearchIcon';
-import AddButton from './AddButton';
-import Spinner from '../base/Spinner';
+import './Todo.css';
 
 export type InputTodoProps = {
   setTodos: SetStateType<TodoDataType[]>;
@@ -39,7 +39,13 @@ const InputTodo = ({ setTodos }: InputTodoProps) => {
             onKeyDown={() => setIsTyping(true)}
             onKeyUp={() => setIsTyping(false)}
           />
-          {isLoading || isSuggestionLoading ? <Spinner /> : <AddButton />}
+          <Spinner
+            className={`${
+              isLoading || (isSuggestionLoading && !hasNextPage)
+                ? ``
+                : `input_spinner`
+            }`}
+          />
         </div>
       </form>
       <Dropdown

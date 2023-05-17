@@ -1,8 +1,9 @@
 import { useCallback, useState } from 'react';
+
 import { SetStateType, TodoDataType } from '../../types/types';
 import { handleRemoveTodo } from '../../utils/todos';
-import Spinner from '../base/Spinner';
-import RemoveButton from './RemoveButton';
+import Spinner from '../icons/Spinner';
+import RemoveButton from '../icons/RemoveButton';
 
 type TodoItemProps = {
   id: string;
@@ -29,7 +30,9 @@ const TodoItem = ({ id, title, setTodos }: TodoItemProps) => {
     <li className="item">
       <span>{title}</span>
       <div className="item-option">
-        {isLoading ? (
+        {!isLoading ? (
+          <RemoveButton handleClick={handleRemoveTodoCallback} />
+        ) : (
           <Spinner />
         ) : (
           <RemoveButton handleClick={handleRemoveTodoCallback} />
