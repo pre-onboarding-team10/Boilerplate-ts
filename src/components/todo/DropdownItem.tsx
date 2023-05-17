@@ -1,4 +1,5 @@
 import React from 'react';
+
 import ActiveItem from './ActiveItem';
 import { SetStateType, TodoDataType } from '../../types/types';
 import { createTodo } from '../../api/todo';
@@ -17,7 +18,6 @@ const DropdownItem = ({
   const handleClickItem = async () => {
     try {
       const newItem = { title: suggestion };
-      setInputText(suggestion);
       const { data } = await createTodo(newItem);
       if (data) {
         return setTodos(prev => [...prev, data]);
