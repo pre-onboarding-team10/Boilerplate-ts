@@ -1,4 +1,4 @@
-import axios, { AxiosPromise, AxiosRequestConfig } from 'axios';
+import axios, { AxiosInstance, AxiosPromise, AxiosRequestConfig } from 'axios';
 
 interface IApiRequest {
   get: (url: string, request?: AxiosRequestConfig) => AxiosPromise;
@@ -9,7 +9,7 @@ interface IApiRequest {
 const baseURL = process.env.REACT_APP_API_URL;
 const token = process.env.REACT_APP_TOKEN;
 
-const baseInstance = axios.create({
+const baseInstance: AxiosInstance = axios.create({
   baseURL,
   headers: {
     Authorization: `Bearer ${token}`,

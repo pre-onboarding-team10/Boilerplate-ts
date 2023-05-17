@@ -4,7 +4,7 @@ import DropdownItem from './DropdownItem';
 import Spinner from '../icons/Spinner';
 import { SetStateType, TodoDataType } from '../../types/types';
 
-type DropDownTpye = {
+type DropDownType = {
   keyword: string;
   isLoading: boolean;
   hasNextPage: boolean;
@@ -22,7 +22,7 @@ const Dropdown = ({
   getSuggestions,
   setTodos,
   setInputText,
-}: DropDownTpye) => {
+}: DropDownType) => {
   const ref = useIntersect(async (entry, observer) => {
     observer.unobserve(entry.target);
     if (hasNextPage && !isLoading && keyword !== '') {
