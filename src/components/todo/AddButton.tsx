@@ -3,11 +3,9 @@ import { FaPlusCircle } from 'react-icons/fa';
 
 const AddButton = () => {
   return (
-    <ItemButton
-      icon={<FaPlusCircle className="btn-plus" />}
-      className="input-submit"
-      type="submit"
-    />
+    <ItemButton className="input-submit" type="submit">
+      <FaPlusCircle className="btn-plus" data-testid="plus-circle" />
+    </ItemButton>
   );
 };
 

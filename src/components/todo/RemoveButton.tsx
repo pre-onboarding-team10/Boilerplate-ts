@@ -3,10 +3,9 @@ import ItemButton from '../base/ItemButton';
 
 const RemoveButton = ({ handleClick }: { handleClick: () => void }) => {
   return (
-    <ItemButton
-      icon={<FaTrash className="btn-trash" />}
-      handleClick={handleClick}
-    />
+    <ItemButton handleClick={handleClick}>
+      <FaTrash className="btn-trash" />
+    </ItemButton>
   );
 };
 
