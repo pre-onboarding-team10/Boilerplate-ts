@@ -1,8 +1,9 @@
 import React from 'react';
+import { IoEllipsisHorizontalSharp } from 'react-icons/io5';
+
 import useIntersect from '../../hooks/useIntersect';
 import DropdownItem from './DropdownItem';
-import Spinner from '../base/Spinner';
-import { IoEllipsisHorizontalSharp } from 'react-icons/io5';
+import Spinner from '../icons/Spinner';
 import { SetStateType, TodoDataType } from '../../types/types';
 
 type DropDownTpye = {
@@ -44,17 +45,18 @@ const Dropdown = ({
                 setInputText={setInputText}
               />
             ))}
-            <div className="dropdown-loading">
-              {isLoading ? (
+
+            {isLoading ? (
+              <div className="dropdown-loading">
                 <Spinner />
-              ) : hasNextPage ? (
-                <div ref={ref}>
-                  <IoEllipsisHorizontalSharp />
-                </div>
-              ) : (
-                <></>
-              )}
-            </div>
+              </div>
+            ) : hasNextPage ? (
+              <div ref={ref}>
+                <IoEllipsisHorizontalSharp />
+              </div>
+            ) : (
+              <></>
+            )}
           </ul>
         </div>
       </div>
