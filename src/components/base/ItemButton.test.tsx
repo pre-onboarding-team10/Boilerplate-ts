@@ -1,5 +1,5 @@
 import { render, fireEvent } from '@testing-library/react';
-import ItemButton from '../base/ItemButton';
+import ItemButton from './ItemButton';
 import '@testing-library/jest-dom';
 
 describe('ItemButton', () => {
