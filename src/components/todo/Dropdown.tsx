@@ -1,6 +1,4 @@
-import React from 'react';
 import { IoEllipsisHorizontalSharp } from 'react-icons/io5';
-
 import useIntersect from '../../hooks/useIntersect';
 import DropdownItem from './DropdownItem';
 import Spinner from '../icons/Spinner';
@@ -45,7 +43,6 @@ const Dropdown = ({
                 setInputText={setInputText}
               />
             ))}
-
             {isLoading ? (
               <div className="dropdown-loading">
                 <Spinner />
