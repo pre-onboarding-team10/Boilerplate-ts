@@ -65,19 +65,29 @@ npm start
 
 **※ 로컬 실행 시 API KEY 값과 API 주소가 필요합니다.**
 
-## 상세 구현 내용 -- (추가 예정)
+## 상세 구현 내용
 
 ---
 
-1. 리팩토링
-
-2. 무한 스크롤
-
-3. debounce
-
-4. dropdown
-	
-5. 테스트 코드 작성
+#### 1. 리팩토링
+- TS로 주어진 소스 코드 옮겨 적기
+- 작동 방법을 익히고, 개선이 필요하다고 판단되는 부분이 있다면 리팩토링
+- CSS 적용, 리팩토링하기
+#### 2. 무한 스크롤
+- ref를 선언하여 타겟 요소를 지정
+- observe 호출을 통해 target요소를 관찰하고 해당 요소가 관측되었을 경우 콜백함수 실행
+#### 3. debounce
+- input으로 받아온 text에 setTimeout() 500ms 적용
+- keyword가 변경되면 debounce 코드 실행 후 debouncedInputValue 상태에 저장
+- debouncedInputValue가 변경되면 search API 호출
+#### 4. dropdown
+- Search API를 통해 Dropdown 구현
+- 현재 페이지(page)가 총 페이지(qty)수보다 적으면 다음 페이지 호출
+- 다음 페이지가 없으면 hasNextPage 상태 false로 설정
+- spinner 적용을 위해 isSuggestionLoading 로딩 상태 생성
+#### 5. 테스트 코드 작성
+- Base Components에 대한 Test Code
+- icon Components에 대한 Test Code
 
 
 ---
