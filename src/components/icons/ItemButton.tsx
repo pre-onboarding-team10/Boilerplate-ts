@@ -4,7 +4,7 @@ type Props = {
   icon: ReactNode;
   handleClick?: () => void;
   className?: string;
-  type?: 'button' | 'submit';
+  type?: 'button';
 };
 
 const ItemButton = ({
