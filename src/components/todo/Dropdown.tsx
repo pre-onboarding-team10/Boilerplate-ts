@@ -1,11 +1,10 @@
-import React from 'react';
 import useIntersect from '../../hooks/useIntersect';
 import DropdownItem from './DropdownItem';
 import Spinner from '../base/Spinner';
 import { IoEllipsisHorizontalSharp } from 'react-icons/io5';
 import { SetStateType, TodoDataType } from '../../types/types';
 
-type DropDownTpye = {
+type DropDownType = {
   keyword: string;
   isLoading: boolean;
   hasNextPage: boolean;
@@ -23,7 +22,7 @@ const Dropdown = ({
   getSuggestions,
   setTodos,
   setInputText,
-}: DropDownTpye) => {
+}: DropDownType) => {
   const ref = useIntersect(async (entry, observer) => {
     observer.unobserve(entry.target);
     if (hasNextPage && !isLoading && keyword !== '') {
