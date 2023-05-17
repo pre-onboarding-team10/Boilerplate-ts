@@ -44,17 +44,19 @@ const Dropdown = ({
                 setInputText={setInputText}
               />
             ))}
-            <div className="dropdown-loading">
-              {isLoading ? (
+            {isLoading ? (
+              <div className="dropdown-loading">
                 <Spinner />
-              ) : hasNextPage ? (
+              </div>
+            ) : hasNextPage ? (
+              <div className="dropdown-loading">
                 <div ref={ref}>
                   <IoEllipsisHorizontalSharp />
                 </div>
-              ) : (
-                <></>
-              )}
-            </div>
+              </div>
+            ) : (
+              <></>
+            )}
           </ul>
         </div>
       </div>
