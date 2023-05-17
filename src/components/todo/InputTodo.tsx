@@ -39,11 +39,13 @@ const InputTodo = ({ setTodos }: InputTodoProps) => {
             onKeyDown={() => setIsTyping(true)}
             onKeyUp={() => setIsTyping(false)}
           />
-          {isLoading || (isSuggestionLoading && !hasNextPage) ? (
-            <Spinner />
-          ) : (
-            <Spinner className="input_spinner" />
-          )}
+          <Spinner
+            className={`${
+              isLoading || (isSuggestionLoading && !hasNextPage)
+                ? ``
+                : `input_spinner`
+            }`}
+          />
         </div>
       </form>
       <Dropdown
