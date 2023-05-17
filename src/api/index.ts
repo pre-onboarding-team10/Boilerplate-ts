@@ -1,4 +1,4 @@
-import axios, { AxiosPromise, AxiosRequestConfig } from 'axios';
+import axios, { AxiosInstance, AxiosPromise, AxiosRequestConfig } from 'axios';
 
 interface IApiRequest {
   get: (url: string, request?: AxiosRequestConfig) => AxiosPromise;
